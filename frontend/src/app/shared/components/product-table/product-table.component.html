@@ -1,0 +1,56 @@
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Listado de Productos</h2>
+    <button class="btn btn-primary">
+      <i class="bi bi-plus-lg"></i> Agregar Producto
+    </button>
+  </div>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Creacion</th>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Stock Inicial</th>
+        <th>Stock Actual</th>
+        <th>Compra</th>
+        <th>Venta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos; let i=index">
+        <td>{{ i+1 }}</td>
+        <td>{{ producto.createdAt | date:'yyyy-MM-dd' }}</td>
+        <td>{{ producto.codigo }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.stock_inicial }}</td>
+        <td>{{ producto.stock_actual }}</td>
+        <td>{{ producto.compra | number:'1.0-0' }}</td>
+        <td>{{ producto.venta | number:'1.0-0' }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2"
+          data-bs-toggle="tooltip" data-bs-placement="top"
+          data-bs-custom-class="custom-tooltip"
+          data-bs-title="Editar"
+
+            >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-sm btn-danger"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+            data-bs-title="Eliminar">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
