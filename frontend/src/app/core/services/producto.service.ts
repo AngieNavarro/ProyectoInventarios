@@ -8,25 +8,25 @@ import { ProductoRepository } from '../repositories/producto.repository';
 })
 export class ProductoService {
 
-  constructor(private productoRepository: ProductoRepository) {}
+  constructor(private productoRepository: ProductoRepository) { }
 
   obtenerProductos(): Observable<Producto[]> {
     return this.productoRepository.getAll();
   }
 
-  // obtenerProductoPorId(id: number): Observable<Producto> {
-  //   return this.productoRepository.getById(id);
-  // }
+  obtenerProductoPorId(id: number): Observable<Producto> {
+    return this.productoRepository.getById(id);
+  }
 
-  // agregarProducto(producto: Producto): Observable<Producto> {
-  //   return this.productoRepository.create(producto);
-  // }
+  agregarProducto(producto: Producto): Observable<Producto> {
+    return this.productoRepository.create(producto);
+  }
 
-  // actualizarProducto(id: number, producto: Producto): Observable<Producto> {
-  //   return this.productoRepository.update(id, producto);
-  // }
+  actualizarProducto(id: number, producto: Producto): Observable<Producto> {
+    return this.productoRepository.update(id, producto);
+  }
 
-  // eliminarProducto(id: number): Observable<void> {
-  //   return this.productoRepository.delete(id);
-  // }
+  eliminarProducto(id: number): Observable<void> {
+    return this.productoRepository.delete(id);
+  }
 }

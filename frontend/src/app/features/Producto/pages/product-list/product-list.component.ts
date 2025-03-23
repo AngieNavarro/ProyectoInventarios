@@ -14,10 +14,13 @@ export class ProductListComponent {
   productos: Producto[] = [];
   productos_filtrados: Producto[] = [];
   private prodService = inject(ProductoService);
-  private _searchService= inject(SearchService);
+  private _searchService = inject(SearchService);
 
   ngOnInit(): void {
     console.log('inicio lista')
+    this.cargarProductos();
+  }
+  cargarProductos() {
     this.prodService.obtenerProductos().subscribe({
       next: (data) => {
         this.productos = data;
@@ -26,10 +29,10 @@ export class ProductListComponent {
       error: (err) => console.error('Error al obtener productos', err),
     });
 
-        // Escuchar cambios en la búsqueda
-        this._searchService.searchTerm$.subscribe((term) => {
-          this.filtrarProductos(term);
-        });
+    // Escuchar cambios en la búsqueda
+    this._searchService.searchTerm$.subscribe((term) => {
+      this.filtrarProductos(term);
+    });
   }
 
   filtrarProductos(term: string) {

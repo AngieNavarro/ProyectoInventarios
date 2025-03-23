@@ -8,26 +8,26 @@ import { Producto } from '../models/producto.model';
 })
 export class ProductoRepository {
   private apiUrl = 'http://localhost:3003/';
-  private MyapiUrl = 'api/productos';
-  constructor(private http: HttpClient) {}
+  private MyapiUrl = 'api/productos/';
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.apiUrl}${this.MyapiUrl}`);
   }
 
-  // getById(id: number): Observable<Producto> {
-  //   return this.http.get<Producto>(`${this.apiUrl}${this.MyapiUrl}/${id}`);
-  // }
+  getById(id: number): Observable<Producto> {
+    return this.http.get<Producto>(`${this.apiUrl}${this.MyapiUrl}${id}`);
+  }
 
-  // create(producto: Producto): Observable<Producto> {
-  //   return this.http.post<Producto>(this.apiUrl, producto);
-  // }
+  create(producto: Producto): Observable<Producto> {
+    return this.http.post<Producto>(`${this.apiUrl}${this.MyapiUrl}`, producto);
+  }
 
-  // update(id: number, producto: Producto): Observable<Producto> {
-  //   return this.http.put<Producto>(`${this.apiUrl}${this.MyapiUrl}/${id}`, producto);
-  // }
+  update(id: number, producto: Producto): Observable<Producto> {
+    return this.http.put<Producto>(`${this.apiUrl}${this.MyapiUrl}${id}`, producto);
+  }
 
-  // delete(id: number): Observable<void> {
-  //   return this.http.delete<void>(`${this.apiUrl}${this.MyapiUrl}/${id}`);
-  // }
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}${this.MyapiUrl}${id}`);
+  }
 }

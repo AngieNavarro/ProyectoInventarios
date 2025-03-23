@@ -27,7 +27,7 @@ export class productoRepositories {
             if (error instanceof UniqueConstraintError) {
                 throw new ErroresControlados(`El código ${data.codigo} del producto ya existe`, 400);
 
-            }else{
+            } else {
                 throw new ErroresControlados(error.parent?.sqlMessage, error.parent?.errno)
             }
         }
@@ -48,10 +48,10 @@ export class productoRepositories {
 
     async delete(id: number) {
         try {
-                    const producto = await Producto.findByPk(id);
-        if (!producto) return null;
-        await producto.destroy();
-        return producto;
+            const producto = await Producto.findByPk(id);
+            if (!producto) return null;
+            await producto.destroy();
+            return producto;
         } catch (error) {
             throw new ErroresControlados('Error al elimnar el producto', 500)
 

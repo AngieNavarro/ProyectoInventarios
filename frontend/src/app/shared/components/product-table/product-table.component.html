@@ -1,8 +1,40 @@
+<!-- Modal de Confirmación (puede ir fuera del contenedor si lo deseas) -->
+<div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmacionModalLabel">Confirmación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Desea eliminar al producto <strong>{{ productoaEliminar?.nombre }}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmarEliminacion()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Toast Container: posición fija en la esquina inferior derecha -->
+<div class="position-fixed  start-50 translate-middle p-3" style="z-index: 11;">
+  <div id="eliminacionToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-danger text-white">
+      <strong class="me-auto">Notificación</strong>
+      <small>Ahora</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <strong>Producto <span id="nombreToast"></span> eliminado correctamente.</strong>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <br>
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Listado de Productos</h2>
-    <button class="btn btn-primary">
+    <button class="btn btn-primary" (click)="nuevo()">
       <i class="bi bi-plus-lg"></i> Agregar Producto
     </button>
   </div>
@@ -35,18 +67,12 @@
         <td>{{ producto.compra | number:'1.0-0' }}</td>
         <td>{{ producto.venta | number:'1.0-0' }}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2"
-          data-bs-toggle="tooltip" data-bs-placement="top"
-          data-bs-custom-class="custom-tooltip"
-          data-bs-title="Editar"
-
-            >
+          <button class="btn btn-sm btn-warning me-2" data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip" data-bs-title="Editar" (click)="editar(producto)">
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button class="btn btn-sm btn-danger"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-            data-bs-title="Eliminar">
+          <button class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-title="Eliminar" (click)="eliminar(producto)">
             <i class="bi bi-trash3-fill"></i>
           </button>
         </td>

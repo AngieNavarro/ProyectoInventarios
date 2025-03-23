@@ -80,7 +80,7 @@ const postProducto = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
 exports.postProducto = postProducto;
 const updateProducto = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
-    const id = Number(req.params.id);
+    const id = Number(req.params['id']);
     const products = yield prodService.obtenerProductosId((id));
     if (products) {
         try {

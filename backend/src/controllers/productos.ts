@@ -72,7 +72,7 @@ export const postProducto = async (req: Request, res: Response, next: NextFuncti
 
 export const updateProducto = async (req: Request, res: Response, next: NextFunction) => {
     const body = req.body;
-    const id = Number(req.params.id);
+    const id = Number(req.params['id']);
     const products = await prodService.obtenerProductosId((id));
     if (products) {
         try {
