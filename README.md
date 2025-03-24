@@ -6,4 +6,4 @@ El proyecto Inventario es una aplicación web que permite gestionar productos, m
 ✅ **Backend**: Node.js con Express y Sequelize  
 ✅ **Base de datos**: MySQL 8.0  
 ✅ **ORM**: Sequelize para la comunicación con la base de datos
-✅ **Estilos**: Bootstrap
+
